@@ -22,6 +22,7 @@
 
 (define_automaton "pipe0")
 (define_cpu_unit "alu" "pipe0")
+(define_cpu_unit "lsu" "pipe0")
 (define_cpu_unit "imuldiv" "pipe0")
 (define_cpu_unit "fdivsqrt" "pipe0")
 
@@ -30,15 +31,15 @@
        (eq_attr "type" "unknown,const,arith,shift,slt,multi,auipc,nop,logical,move"))
   "alu")
 
-(define_insn_reservation "generic_load" 3
+(define_insn_reservation "generic_load" 5
   (and (eq_attr "tune" "generic")
        (eq_attr "type" "load,fpload"))
-  "alu")
+  "lsu")
 
 (define_insn_reservation "generic_store" 1
   (and (eq_attr "tune" "generic")
        (eq_attr "type" "store,fpstore"))
-  "alu")
+  "lsu")
 
 (define_insn_reservation "generic_xfer" 3
   (and (eq_attr "tune" "generic")
