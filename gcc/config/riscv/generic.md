@@ -51,16 +51,16 @@
        (eq_attr "type" "branch,jump,call"))
   "alu")
 
-(define_insn_reservation "generic_imul" 10
+(define_insn_reservation "generic_imul" 2
   (and (eq_attr "tune" "generic")
        (eq_attr "type" "imul"))
-  "imuldiv*10")
+  "imuldiv*2")
 
-(define_insn_reservation "generic_idivsi" 34
+(define_insn_reservation "generic_idivsi" 3
   (and (eq_attr "tune" "generic")
        (and (eq_attr "type" "idiv")
 	    (eq_attr "mode" "SI")))
-  "imuldiv*34")
+  "imuldiv*3")
 
 (define_insn_reservation "generic_idivdi" 66
   (and (eq_attr "tune" "generic")
